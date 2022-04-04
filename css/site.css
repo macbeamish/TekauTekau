@@ -1,5 +1,5 @@
 :root{
-    --primary-color:#387237;
+    --primary-color:purple;
     --secondary-color:#CB232C;
     --dark-color:#292929;
     --white-color:#e7e7e7;
@@ -56,4 +56,14 @@ pre[class*="language-"] {
 white-space: pre-wrap;
 word-break: break-all;
 word-wrap: break-word;
+}
+.even{
+ font-weight: bold;
+}
+.odd{
+    font-weight: normal;
+
+}
+.brand-nav{
+    font-family:'Orbitron', sans-serif;
 }

@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>Hunito: A Coding Project by Mac Beamish</title>
+    <title>Tekau² A Coding Project by Mac Beamish</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,6 +11,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/site.css">
         <link rel="stylesheet" href="css/prism.css">
         <link rel="icon" type="image/x-icon" href="/img/favicon-32x32.png">
@@ -26,7 +29,7 @@
 <!-- Nav -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/white-on-red-logo-only.png" class="pb-1" height="25" alt="logo-icon"> HUNITO</a>
+        <a class="navbar-brand brand-nav" href="#"><img src="img/white-on-red-logo-only.png" class="pb-1" height="25" alt="logo-icon"> Tekau²</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,7 +37,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link"  href="#">Home</a>
+                    <a class="nav-link"  href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="#">About</a>
@@ -46,7 +49,7 @@
                     <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="-blank" href="#">Git Repo</a>
+                    <a class="nav-link" target="-blank" href="https://github.com/macbeamish/TekauTekau">Git Repo</a>
                 </li>
                 
             </ul>
@@ -56,21 +59,75 @@
     <!-- Main -->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5">
-            <h2 class="border-1 border-bottom border-dark pt-5"> The Code for APP NAME</h2>
+            <h2 class="border-1 border-bottom border-dark pt-5"> The Code for Tekau²</h2>
             <div class="row row-cols-1 row-cols-lg-2 pt-5">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            function hundOver(){
-                                alert("Hello World");
+                            // get values from interface - form
+                            function getValues(){
+                                // get values from the page
+                                let startValue = document.getElementById("startValue").value;
+                                let endValue = document.getElementById("endValue").value;
+                                let incrementValue = document.getElementById("increment").value;
+                               
+                                startValue = parseInt(startValue);
+                                endValue = parseInt(endValue);
+                                incrementValue = parseInt(incrementValue);
+                                
+                                if(Number.isInteger(startValue) && Number.isInteger(endValue) && Number.isInteger(incrementValue)){
+                                    // call generateNumbers
+                                    let numbers = generateNumbers(startValue, endValue, incrementValue);
+                            
+                                    // call displayNumbers
+                                    displayNumbers(numbers)
+                            
+                                
+                                } else{
+                                    alert("You Must Use Integers Only");
+                                }
+                            
+                                
                             }
-
+                            
+                            // generate numbers from 
+                            function generateNumbers(start, end, increment){
+                                let numbers =[];
+                                for(let i=start; i<=end; i+=increment){
+                                    numbers.push(i);
+                                }  
+                                return numbers;
+                            }
+                            
+                            
+                            
+                           
+                            // display or view functions
+                            function displayNumbers(numbers){
+                               
+                                let templateRows = "";
+                                for (let index = 0; index < numbers.length; index++) {
+                                    let className = "even";
+                                    let number = numbers[index];
+                                    // display even numbers in bold
+                                    if(number % 2 == 0){
+                                        className = "even";
+                                    }
+                                    else{
+                                        className = "odd";
+                                    }
+                                    templateRows +=`<tr><td class="${className}" >${number}</td></tr>`;
+                                }
+                            
+                                document.getElementById("results").innerHTML = templateRows;
+                            
+                            }
 
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">     
-                    <p>The Code is....</p>
+                    <p></p>
                 </div>
             </div>     
         </div>
