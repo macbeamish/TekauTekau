@@ -1,1 +1,1 @@
-A Basic Site template for my coding projects, built using vanilla JS and Bootstrap CSS
+A Vanilla JS and Bootstrap website that features a logic to count to a given number by increments of a chosen number.
